@@ -1,13 +1,17 @@
 import React, {useState} from 'react'
-import { View, Text, StyleSheet, Alert } from 'react-native'
+import { View, Text, StyleSheet, Alert, KeyboardAvoidingView } from 'react-native'
 import { TextInput, Button, RadioButton } from 'react-native-paper'
 
 const MakeReport = () => {
 
     const [reporter, updateReporter] = useState(null)
+    const [keyboard, enableKeyboard] = useState(false)
 
     return(
-        <View styles={styles.container} >
+
+        <KeyboardAvoidingView  styles={styles.container} enabled={keyboard} behavior={"position"} >
+
+        <View  >
             <Text style={styles.title} >Make Report</Text>
 
             <Text>Who are you reporting? </Text>
@@ -48,22 +52,24 @@ const MakeReport = () => {
                     <Text>Nearest Landmark</Text>
                     <TextInput placeholder={"eg. Pacific Station"} />
 
-                    <View>
+                    <View  >
                     <Text>Alternate Contact</Text>
-                    <TextInput placeholder={"Contact Number"} />
+                    <TextInput placeholder={"Contact Number"} onFocus={() => enableKeyboard(true)} />
                 </View>
 
 
+              
+                <View>
                 </View>
                 <Text>description</Text>
-                <TextInput placeholder={"Type Something"} />
-                <View>
-
+                <TextInput placeholder={"Type Something"} onFocus={() => enableKeyboard(true)} />
                 </View>
 
             <Button onPress={() => Alert.alert("Success", "Your report has been made successfully")} >Report Case</Button>
 
         </View>
+
+        </KeyboardAvoidingView>
     )
 }
 

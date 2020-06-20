@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, Alert, Image } from 'react-native';
+import { StyleSheet, Text, View, Button, Alert, Image, KeyboardAvoidingView } from 'react-native';
 import { Card, TextInput, RadioButton } from 'react-native-paper'
-
 
 
 
@@ -13,8 +12,12 @@ const Profile = () => {
     })
 
     const [gender, updateGender] = useState(null);
+    const [keyboard, enableKeyboard] = useState(false)
+
 
     return(
+
+        <KeyboardAvoidingView behavior={"position"} enabled={keyboard} > 
         <View style={styles.container} >
 
             <Text style={{...styles.title, fontSize: 20 }} >Profile</Text>
@@ -122,6 +125,8 @@ const Profile = () => {
             </View>
 
         </View>
+
+        </KeyboardAvoidingView>
     )
 }
 
