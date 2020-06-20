@@ -43,14 +43,14 @@ const MakeReport = () => {
 
             <View>
                     <Text>Location or Digital Address</Text>
-                    <TextInput placeholder={"eg. GA-492-74"} />
+                    <TextInput placeholder={"eg. GA-492-74"} onFocus={() => enableKeyboard(true)} />
                 </View>
 
      
 
                 <View>
                     <Text>Nearest Landmark</Text>
-                    <TextInput placeholder={"eg. Pacific Station"} />
+                    <TextInput placeholder={"eg. Pacific Station"} onFocus={() => enableKeyboard(true)} />
 
                     <View  >
                     <Text>Alternate Contact</Text>

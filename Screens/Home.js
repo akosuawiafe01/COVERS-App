@@ -35,13 +35,13 @@ const Home = ({ navigation }) => {
 
         <View style={{ marginBottom: StyleSheet.hairlineWidth, borderBottomWidth: 0.5, borderBottomColor: "#e0e0e0", marginTop: 50,  }}> 
  
-        {/* {
+        {
             loading ? <ActivityIndicator large color="#006211" />
                        : <View>
                             <HomeCarousel data={ casesData.globalTotal } />
                         </View> 
                                 
-        }              */}
+                    }
 
     
         </View>

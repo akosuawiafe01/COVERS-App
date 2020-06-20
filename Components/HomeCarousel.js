@@ -5,12 +5,7 @@ import HomeCarouselItem from './HomeCarouselItem'
 
 
 const { width, height } = Dimensions.get('window')
-
-const renderList  = ({data}) => {
-    return(
-    Object.entries(data).keys
-    )
-}
+ 
 
 
 const HomeCarousel = ({ data }) => {
@@ -18,13 +13,11 @@ const HomeCarousel = ({ data }) => {
         <View style={{paddingLeft: 5}}>
 
 
-            <FlatList
-            data={renderList}
-            key={Object.entries(data).keys}
-            renderItem={({item}) => 
-            {return(
-            <HomeCarouselItem item={item} />
-            )}
+            <FlatList horizontal
+            data={Object.entries(data)}
+            keyExtractor={(item,index)=>String(index)}
+            renderItem={({item}) =>  
+            <HomeCarouselItem label={item[0]} value={item[1]} /> 
             }
 
             />
