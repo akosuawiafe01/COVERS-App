@@ -26,15 +26,8 @@ const Stack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
 
-const HomeStack = () => {
-
-        return(
-        <Stack.Navigator >
- 
-         <Stack.Screen name="Home" component={Home} 
-            options={{
-                
-                headerLeft: () => 
+const stackOptions = {
+    headerLeft: () => 
                 <View style={{margin: 5}} >
                 <Image style={{width: 50, height: 50, borderRadius: 25 }} source={require('../assets/COVID19-1.jpg')}  />
                 </View>,
@@ -42,8 +35,15 @@ const HomeStack = () => {
                 <View style={{margin: 5}}>
                 <Feather name="bell" size={30}  />
                 </View>
-                
-            }} 
+}
+
+const HomeStack = () => {
+
+        return(
+        <Stack.Navigator >
+ 
+         <Stack.Screen name="Home" component={Home} 
+            options={stackOptions} 
 
         />
 
@@ -60,17 +60,7 @@ const ReportStack = () => {
             <Stack.Screen 
             name="Report" 
             component={Report} 
-            options={{
-                
-                headerLeft: () => 
-                <View style={{margin: 5}} >
-                <Image onPress={() => console.log("Image tapped")} style={{width: 50, height: 50, borderRadius: 25 }} source={require('../assets/COVID19-1.jpg')}  />
-                </View>,
-                headerRight: () => 
-                <View style={{margin: 5}}>
-                <Feather name="bell" size={30} onPress={({navigation  }) => navigation.navigate(Notification)}/>
-                </View>
-            }} 
+          options={stackOptions} 
     
             />
             <Stack.Screen name="MakeReport" component={MakeReport} />
@@ -87,17 +77,8 @@ const VitalsStack = () => {
             <Stack.Screen 
             name="Vitals" 
             component={Vitals} 
-            options={{
-                
-                headerLeft: () => 
-                <View style={{margin: 5}} >
-                <Image style={{width: 50, height: 50, borderRadius: 25 }} source={require('../assets/COVID19-1.jpg')}  />
-                </View>,
-                headerRight: () => 
-                <View style={{margin: 5}}>
-                <Feather name="bell" size={30}  />
-                </View>
-            }} />
+         options={stackOptions} 
+         />
 
         <Stack.Screen name="LogSymptoms" component={LogSymptoms} />
 
@@ -114,17 +95,7 @@ const SettingsStack = () => {
             <Stack.Screen 
             name="Settings" 
             component={Settings} 
-            options={{
-                
-                headerLeft: () => 
-                <View style={{margin: 5}} >
-                <Image style={{width: 50, height: 50, borderRadius: 25 }} source={require('../assets/COVID19-1.jpg')}  />
-                </View>,
-                headerRight: () => 
-                <View style={{margin: 5}}>
-                <Feather name="bell" size={30}  />
-                </View>
-            }} 
+            options={stackOptions} 
     
             />
         </Stack.Navigator>
