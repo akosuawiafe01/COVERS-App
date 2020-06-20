@@ -2,17 +2,22 @@ import React from 'react'
 import { View, Text, StyleSheet, Button } from 'react-native'
 import {  FAB,  } from 'react-native-paper'
 
-const Vitals = () => {
+
+
+
+const Vitals = ({ navigation }) => {
     return(
-        <View style={{flex: 1}}>
+        <View style={{flex:1}}>
             
-            <Text>Vitals Screen</Text>
+        <View style={{alignItems: "center", justifyContent: "center", flex: 1}}>
+            <Text>You haven't logged in your vitals yet...</Text>
 
-
-            <View style={{flex: 1}} >
-                <Button title="Log Vitals" />
-        
+            <View style={{marginTop: 6}}>
+                <Button title="Log Symptoms" mode="flat" onPress={() => navigation.navigate("LogSymptoms")}></Button>
             </View>
+        </View>
+        
+
     <FAB
     style={styles.fab}
     large
@@ -21,7 +26,7 @@ const Vitals = () => {
     theme={{colors: {accent: 
         "#006211"
     }}}
-    onPress={() => console.log('Pressed')}
+    onPress={() => navigation.navigate("LogSymptoms")}
   />
 
         </View>

@@ -3,11 +3,14 @@ import { View, Text, StyleSheet, Image, Dimensions, FlatList, Animated   } from 
 import { Card, RadioButton, FAB, ActivityIndicator } from 'react-native-paper'
 
 import HomeCarousel from '../Components/HomeCarousel'
+//import Carousel from '../Components/Carousel'
+
+
 
 //Graph data should be placed here
-// import { GET_CASES } from '../graphQL/Query'
+ import { GET_CASES } from '../graphQL/Query'
 
-// import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/react-hooks';
 
 const { width, height } = Dimensions.get('window')
 
@@ -23,7 +26,7 @@ const Home = ({ navigation }) => {
     //    //setData(data), setErrors(errors)
     //    }), [])
 
-    // const {loading, data: casesData, error: casesError} = useQuery(GET_CASES);
+     const {loading, data: casesData, error: casesError} = useQuery(GET_CASES);
 
 
 
@@ -31,18 +34,20 @@ const Home = ({ navigation }) => {
         <View style={styles.container}>
 
         <View style={{ marginBottom: StyleSheet.hairlineWidth, borderBottomWidth: 0.5, borderBottomColor: "#e0e0e0", marginTop: 50,  }}> 
-{/* 
+ 
         {
             loading ? <ActivityIndicator large color="#006211" />
                        : <View>
-                            <HomeCarousel data={ casesData } />
+                            <HomeCarousel data={ casesData.globalTotal } />
                         </View> 
                                 
-        }             */}
+        }             
 
+    
         </View>
 
         
+
 
 
         

@@ -18,6 +18,7 @@ import Notification from '../Screens/Notification'
 import MakeReport from '../Screens/MakeReport'
 import CaseReports from '../Screens/CaseReports'
 import DisplayReports from '../Screens/DisplayReports'
+import LogSymptoms from '../Screens/LogSymptoms'
 
 
 
@@ -66,7 +67,7 @@ const ReportStack = () => {
                 </View>,
                 headerRight: () => 
                 <View style={{margin: 5}}>
-                <Feather name="bell" size={30}  />
+                <Feather name="bell" size={30}  onPress={() => navigation.navi}/>
                 </View>
             }} 
     
@@ -95,9 +96,11 @@ const VitalsStack = () => {
                 <View style={{margin: 5}}>
                 <Feather name="bell" size={30}  />
                 </View>
-            }} 
-    
-            />
+            }} />
+
+        <Stack.Screen name="Log Symptoms" component={LogSymptoms} />
+
+
         </Stack.Navigator>
     )
 }

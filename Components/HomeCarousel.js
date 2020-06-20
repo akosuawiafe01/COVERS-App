@@ -8,13 +8,15 @@ const { width, height } = Dimensions.get('window')
 
 const HomeCarousel = ({  data }) => {
     return (
-        <View>
+        <View style={{paddingLeft: 5}}>
 
-            <FlatList
-            data={Object.entries(data.globalTotal) }
-            renderItem = { ({ item }) => <HomeCarouselItem item={item} /> }
-            />
-
+        
+        {Object.entries(data).forEach(([key, value]) => <HomeCarouselItem key={key} value={value}/>}
+        
+       
+        
+        //console.log(`${key}: ${value}`))
+        
         </View>
     )
 }

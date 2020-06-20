@@ -6,12 +6,13 @@ const { width, height } = Dimensions.get('window')
 
 
 
-const HomeCarouselItem = ( { item } ) => {
+const HomeCarouselItem = ( { key, value } ) => {
     return(
         <View>
             <Card>
                 <View>
-                <Text> item </Text>
+                <Text> {key} </Text>
+                <Text> {value} </Text>
 
                 {/* <Text> { item.key } </Text> */}
                 </View>

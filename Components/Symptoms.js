@@ -5,10 +5,7 @@ import { Card } from 'react-native-paper'
 
 
 
-import ModalComponent from '../Components/Modal'
-
-
-const SettingsFeed = ({ item }) => {
+const Symptoms = ({ item }) => {
     return(
         <View style={{flex:1}} >
 
@@ -26,4 +23,4 @@ const SettingsFeed = ({ item }) => {
     )
 }
 
-export default SettingsFeed;
+export default Symptoms;
