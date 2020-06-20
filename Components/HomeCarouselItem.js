@@ -11,10 +11,12 @@ const HomeCarouselItem = ( {label,value } ) => {
         <View>
             <Card>
                 <View>
+                {label = 'cases' ?  (<Image style={{width: 50, height: 50, borderRadius: 25 }} source={require('../assets/COVID19-1.jpg')}  />)
+                                    : <Text>Hello HomeCarouselItem</Text> }
                 <Text> {label} </Text>
                 <Text> {value} </Text>
 
-                {/* <Text> { item.key } </Text> */}
+
                 </View>
         </Card>
 
