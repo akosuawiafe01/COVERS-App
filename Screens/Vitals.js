@@ -12,9 +12,7 @@ const Vitals = ({ navigation }) => {
         <View style={{alignItems: "center", justifyContent: "center", flex: 1}}>
             <Text>You haven't logged in your vitals yet...</Text>
 
-            <View style={{marginTop: 6}}>
-                <Button title="Log Symptoms" mode="flat" onPress={() => navigation.navigate("LogSymptoms")}></Button>
-            </View>
+        
         </View>
         
 

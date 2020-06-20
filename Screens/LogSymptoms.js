@@ -1,12 +1,12 @@
 import React from 'react'
-import { View, Text, StyleSheet, Button } from 'react-native'
+import { View, Text, StyleSheet, Button, Alert } from 'react-native'
 
 const LogSymptoms = () => {
     return(
-        <View>
+        <View style={{flex: 1}}>
             <Text>Log Symptoms</Text>
 
-            <View>
+            
                 <Text>Dry Cough</Text>
 
                 <Text>Tiredness</Text>
@@ -20,10 +20,11 @@ const LogSymptoms = () => {
                 <Text>Shortness of Breath</Text>
 
 
+            
+
+            <View>
+                <Button title="Log Vitals" onPress={() => Alert.alert("Success", "Your report has been made successfully")} />
             </View>
-
-            <Button title="Log Vitals" onPress={() => Alert.alert("Success", "Your report has been made successfully")} />
-
         </View>
     )
 }

@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
-    // marginTop: Constants.statusBarHeight,
+    marginTop: Constants.statusBarHeight,
     // marginBottom: -40
   },
 });

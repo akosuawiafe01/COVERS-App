@@ -11,11 +11,14 @@ const HomeCarousel = ({  data }) => {
         <View style={{paddingLeft: 5}}>
 
         
-        {Object.entries(data).forEach(([key, value]) => <HomeCarouselItem key={key} value={value}/>}
-        
+         {/* { Object.entries(data)
+        .forEach(([key, value]) => 
+        <HomeCarouselItem key={key} value={value}
+        /> } 
+         */}
        
         
-        //console.log(`${key}: ${value}`))
+        {/* console.log(`${key}: ${value}`)) */}
         
         </View>
     )

@@ -42,6 +42,7 @@ const HomeStack = () => {
                 <View style={{margin: 5}}>
                 <Feather name="bell" size={30}  />
                 </View>
+                
             }} 
 
         />
@@ -63,11 +64,11 @@ const ReportStack = () => {
                 
                 headerLeft: () => 
                 <View style={{margin: 5}} >
-                <Image style={{width: 50, height: 50, borderRadius: 25 }} source={require('../assets/COVID19-1.jpg')}  />
+                <Image onPress={() => console.log("Image tapped")} style={{width: 50, height: 50, borderRadius: 25 }} source={require('../assets/COVID19-1.jpg')}  />
                 </View>,
                 headerRight: () => 
                 <View style={{margin: 5}}>
-                <Feather name="bell" size={30}  onPress={() => navigation.navi}/>
+                <Feather name="bell" size={30} onPress={({navigation  }) => navigation.navigate(Notification)}/>
                 </View>
             }} 
     
@@ -98,7 +99,7 @@ const VitalsStack = () => {
                 </View>
             }} />
 
-        <Stack.Screen name="Log Symptoms" component={LogSymptoms} />
+        <Stack.Screen name="LogSymptoms" component={LogSymptoms} />
 
 
         </Stack.Navigator>
@@ -140,7 +141,10 @@ const BottumTab = ( ) => {
         initialRouteName="Home"
         tabBarOptions={{
             activeTintColor: "#006211",
-            headerRight: ({ focused }) => ( <Entypo  focused={focused} name="home" size={20} />)
+            headerRight: ({ focused }) => ( <Entypo  focused={focused} name="home" size={20} />),
+            headerStyle: {
+                backgroundColor: "#006211"
+            }
         }}
         >
             <Tab.Screen 
