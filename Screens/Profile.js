@@ -17,8 +17,8 @@ const Profile = () => {
 
     return(
 
-        <KeyboardAvoidingView behavior={"position"} enabled={keyboard} > 
-        <View style={styles.container} >
+        <KeyboardAvoidingView behavior={"position"} enabled={keyboard} style={styles.container} > 
+        <View  >
 
             <Text style={{...styles.title, fontSize: 20 }} >Profile</Text>
 
@@ -30,17 +30,14 @@ const Profile = () => {
 
                 <Text style={{...styles.title, alignSelf: "auto",  }} >Personal Details</Text>
 
-                <View style={{flexDirection: "row"}} >
-                <Text>Name: </Text>
-                <Text> { profile.name} </Text>
-            
-                </View>
+      
             
           
                 <View style={{flexDirection: "row"}} >
-                <Text>Age: </Text>
-                <Text> { profile.age} </Text>
-            
+                {/* <Text>Enter your age </Text> */}
+                <View style={{marginTop: 10}}>
+                <TextInput placeholder={"Enter your age"}   />
+                </View>
                 </View>
 
            
@@ -112,7 +109,7 @@ const Profile = () => {
 
             <View style={{marginTop: 10}} >
 
-            <TextInput  mode="outlined" label="Health License Number"  />
+            <TextInput  mode="outlined" label="Health License Number" onFocus={() => enableKeyboard(true)} />
 
             </View>
 
@@ -120,7 +117,7 @@ const Profile = () => {
 
             </View>
 
-            <View style={{marginTop: 10}} >
+            <View style={{marginTop: 10,  }} >
             <Button title="Update Profile" color={"#006211"} onPress={() => Alert.alert("Profile Updated") }  />
             </View>
 
