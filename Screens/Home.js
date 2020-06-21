@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { View, Text, StyleSheet, Image, Dimensions, FlatList, Animated   } from 'react-native'
-import { Card, RadioButton, FAB, ActivityIndicator } from 'react-native-paper'
+import { Card, RadioButton, FAB, ActivityIndicator, TextInput } from 'react-native-paper'
 
 import HomeCarousel from '../Components/HomeCarousel'
 //import Carousel from '../Components/Carousel'
@@ -29,9 +29,17 @@ const Home = ({ navigation }) => {
      const {loading, data: casesData, error: casesError} = useQuery(GET_CASES);
 
 
-
     return(
         <View style={styles.container}>
+        
+        {/* <View style={{padding: 5}}>
+            <TextInput 
+            placeholder="Country Specific Statistics"
+            color="#006211"
+            label="Search for a country"
+           </View>
+            /> */}
+      
 
         <View style={{ marginBottom: StyleSheet.hairlineWidth, borderBottomWidth: 0.5, borderBottomColor: "#e0e0e0", marginTop: 50,  }}> 
  
@@ -81,6 +89,7 @@ const Home = ({ navigation }) => {
         </View>
     )
 }
+
 
 
 const styles = StyleSheet.create({

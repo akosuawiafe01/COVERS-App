@@ -9,21 +9,39 @@ export const GET_CASES = gql`
     cases,
     deaths,
     recovered,
-    deaths
+    
       }
   }
 
 `;
 
 
-export const VERIFY_USER = gql`
+export const REGISTER_USER = gql`
 
-mutation LoginUserOutput($input: String! ){
-  loginUser{
+mutation LoginUserOutput($contactNumber: String!){
+  loginUser(input: {phone: $contactNumber}){
     message,
     success
   }
   
+}
+
+`;
+
+export const VERIFY_USER = gql`
+mutation validateUser{
+  validateLoginUser(input: {
+    phone: $phoneNumber,
+    otp: "12345"
+  }){
+    user{
+      lastName, gender
+    }
+    createdAt,
+    updatedAt,
+    
+    mobileToken
+  }
 }
 
 `;

@@ -6,6 +6,15 @@ import { Card } from 'react-native-paper'
 import SettingsFeed from '../Components/SettingsFeeds'
 import ModalComponent from '../Components/Modal'
 
+//Components
+import SelfAssessment from '../Components/SelfAssessment'
+import FAQs from '../Components/FAQs'
+import TestingCenters from '../Components/TestingCenters'
+import PersonalDetails from '../Components/PersonalDetails'
+import Audio from '../Components/Audio'
+import Privacy from '../Components/Privacy'
+import Share from '../Components/Share'
+
 const settingsFeed = [
     { key: 'self_assessment', title: "Self Assessment", feed: 'Ascertain your COVID-19 risk using our screening tool' },
     { key: 'faqs', title: "FAQs", feed: "Get answers to frequently Asked Questions" },
@@ -38,25 +47,25 @@ const Settings = () => {
             </View>
             {/* Put your modals here*/}
             <Modal visible={currentModal === 'self_assessment'} onRequestClose={closeModal}>
-                <Text>Self Assessment</Text>
+                <SelfAssessment/>
             </Modal>
             <Modal visible={currentModal === 'faqs'} onRequestClose={closeModal}>
-                <Text>FAQs</Text>
+                <FAQs/>
             </Modal>
             <Modal visible={currentModal === 'centers'} onRequestClose={closeModal}>
-                <Text>Testing Centers</Text>
+                <TestingCenters/>
             </Modal>
             <Modal visible={currentModal === 'details'} onRequestClose={closeModal}>
-                <Text>Testing Centers</Text>
+                <PersonalDetails/>
             </Modal>
             <Modal visible={currentModal === 'audio'} onRequestClose={closeModal}>
-                <Text>Testing Centers</Text>
+                <Audio/>
             </Modal>
             <Modal visible={currentModal === 'privacy'} onRequestClose={closeModal}>
-                <Text>Testing Centers</Text>
+                <Privacy/>
             </Modal>
             <Modal visible={currentModal === 'share'} onRequestClose={closeModal}>
-                <Text>Testing Centers</Text>
+                <Share/>
             </Modal>
             
         </>

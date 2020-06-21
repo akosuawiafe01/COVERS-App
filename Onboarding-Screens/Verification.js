@@ -1,12 +1,12 @@
                                                      // OnboardingScreen 2: Verification Page
 
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, Alert } from 'react-native';
 
 import { TextInput } from 'react-native-paper'
 
 import { useMutation } from '@apollo/react-hooks'
-
+import { REGISTER_USER, VERIFY_USER } from '../graphQL/Query'
 
 
 const Verification = ({ route, navigation }) => {
@@ -19,8 +19,8 @@ const Verification = ({ route, navigation }) => {
         navigation.navigate("General_Info")
     }
     
-    
-    
+    const [validateUser, { loading, data, error }] = useMutation(VERIFY_USER);
+    const [resend, showresend] = useState(false)
     return(
         <View style={styles.container}>
             <Text style={styles.title} >Verification Pin</Text>
@@ -40,9 +40,7 @@ const Verification = ({ route, navigation }) => {
 
         
         <View style={styles.activate}>
-
-        
-            <Text>Resend code</Text>
+            <Text onPress={() =>Alert.alert("A new verification pin has been sent to ",`${contactNumber}` )}>Resend code</Text>
         </View>
 
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Image } from 'react-native'
+import { View, Image, TouchableNativeFeedback } from 'react-native'
 import { Entypo, Ionicons, Feather, AntDesign, EvilIcons } from '@expo/vector-icons'
 
 //Bottum Tabs 
@@ -31,60 +31,65 @@ const Stack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
 
-const stackOptions = {
-    headerLeft: () => 
-                <View style={{margin: 5}} >
-                <Image style={{width: 50, height: 50, borderRadius: 25 }} source={require('../assets/COVID19-1.jpg')}  />
-                </View>,
-                headerRight: () => 
-                <View style={{margin: 5}}>
-                <Feather name="bell" size={30}  />
-                </View>
-}
+const stackOptions = ({navigation})=>({
+    headerLeft: () =>
+        <TouchableNativeFeedback onPress={() => navigation.navigate("Profile")}>
+            <View style={{ margin: 5 }} >
+                <Image style={{ width: 50, height: 50, borderRadius: 25 }} source={require('../assets/COVID19-1.jpg')} />
+            </View>
+        </TouchableNativeFeedback>,
+    headerRight: () =>
+        <TouchableNativeFeedback onPress={() => navigation.navigate("Notification")}>
+            <View style={{ margin: 5 }}>
+                <Feather name="bell" size={30} />
+            </View>
+        </TouchableNativeFeedback>
+});
 
 
 const OnboardingStack = () => {
-    return(
+    return (
         <Stack.Navigator >
- 
-        <Stack.Screen name="Get Started" component={Get_Started} 
-           options={stackOptions} 
 
-       />
+            <Stack.Screen name="Get Started" component={Get_Started}
+                options={stackOptions}
 
-       <Stack.Screen name="General_Info" component={General_Info} />
-       <Stack.Screen name="Verification" component={Verification} />
+            />
 
-   </Stack.Navigator>  
+            <Stack.Screen name="General_Info" component={General_Info} />
+            <Stack.Screen name="Verification" component={Verification} />
+
+        </Stack.Navigator>
     )
 }
 
 const HomeStack = () => {
 
-        return(
+    return (
         <Stack.Navigator >
- 
-         <Stack.Screen name="Home" component={Home} 
-            options={stackOptions} 
 
-        />
 
-        <Stack.Screen name="Profile" component={Profile} />
-        <Stack.Screen name="Notification" component={Notification} />
+            <Stack.Screen name="Home" component={Home}
+                options={stackOptions}
 
-    </Stack.Navigator>
+            />
+
+            <Stack.Screen name="Profile" component={Profile} />
+            <Stack.Screen name="Notification" component={Notification} />
+
+        </Stack.Navigator>
     )
 }
 
 
 const ReportStack = () => {
-    return(
+    return (
         <Stack.Navigator>
-            <Stack.Screen 
-            name="Report" 
-            component={Report} 
-          options={stackOptions} 
-    
+            <Stack.Screen
+                name="Report"
+                component={Report}
+                options={stackOptions}
+
             />
             <Stack.Screen name="MakeReport" component={MakeReport} />
             <Stack.Screen name="CaseReports" component={CaseReports} />
@@ -97,17 +102,17 @@ const ReportStack = () => {
 
 
 const VitalsStack = () => {
-    return(
+    return (
         <Stack.Navigator>
-            <Stack.Screen 
-            name="Vitals" 
-            component={Vitals} 
-         options={stackOptions} 
-         />
+            <Stack.Screen
+                name="Vitals"
+                component={Vitals}
+                options={stackOptions}
+            />
 
-        <Stack.Screen name="LogSymptoms" component={LogSymptoms} />
-        <Stack.Screen name="Profile" component={Profile} />
-        <Stack.Screen name="Notification" component={Notification} />
+            <Stack.Screen name="LogSymptoms" component={LogSymptoms} />
+            <Stack.Screen name="Profile" component={Profile} />
+            <Stack.Screen name="Notification" component={Notification} />
 
         </Stack.Navigator>
     )
@@ -116,16 +121,16 @@ const VitalsStack = () => {
 
 
 const SettingsStack = () => {
-    return(
+    return (
         <Stack.Navigator>
-            <Stack.Screen 
-            name="Settings" 
-            component={Settings} 
-            options={stackOptions} 
-    
+            <Stack.Screen
+                name="Settings"
+                component={Settings}
+                options={stackOptions}
+
             />
-        <Stack.Screen name="Profile" component={Profile} />
-        <Stack.Screen name="Notification" component={Notification} />
+            <Stack.Screen name="Profile" component={Profile} />
+            <Stack.Screen name="Notification" component={Notification} />
 
         </Stack.Navigator>
     )
@@ -135,64 +140,58 @@ const SettingsStack = () => {
 
 
 
-const BottumTab = ( ) => {
-    return(
-        <Tab.Navigator 
-        initialRouteName="Home"
-        tabBarOptions={{
-            activeTintColor: "#006211",
-            headerRight: ({ focused }) => ( <Entypo  focused={focused} name="home" size={20} />),
-            headerStyle: {
-                backgroundColor: "#006211"
-            }
-        }}
+const BottumTab = () => {
+    return (
+        <Tab.Navigator
+            initialRouteName="OnboardingStack"
+            tabBarOptions={{
+                activeTintColor: "#006211",
+                headerRight: ({ focused }) => (<Entypo focused={focused} name="home" size={20} />),
+                headerStyle: {
+                    backgroundColor: "#006211"
+                }
+            }}
         >
-            <Tab.Screen 
-            name="Get_Started" 
-            component={OnboardingStack}  
-            options={{
-                tabBarLabel:"Home",
-                tabBarColor: "#006211",
-                tabBarIcon: ({ focused }) => ( <Entypo  focused={focused} name="home" size={20} />),
 
-            }} 
-                
-             />
 
-            <Tab.Screen 
-            name="Home" 
-            component={HomeStack}  
-            options={{
-                tabBarLabel:"Home",
-                tabBarColor: "#006211",
-                tabBarIcon: ({ focused }) => ( <Entypo  focused={focused} name="home" size={20} />),
 
-            }} 
-                
-             />
-            <Tab.Screen 
-            name="Report" 
-            component={ReportStack} 
-            options={{
-                tabBarLabel:"Report",
-                tabBarColor: "#006281",
-                tabBarIcon: ({ focused }) => (<Ionicons  focused={focused} name="ios-paper-plane" size={20} />)}}
+            <Tab.Screen
+                name="Home"
+                component={HomeStack}
+                options={{
+                    tabBarLabel: "Home",
+                    tabBarColor: "#006211",
+                    tabBarIcon: ({ focused }) => (<Entypo focused={focused} name="home" size={20} />),
+
+                }}
+
             />
-            <Tab.Screen 
-            name="Vitals" 
-            component={VitalsStack} 
-            options={{
-                tabBarLabel:"Vitals",
-                tabBarColor: "#099999",
-                tabBarIcon: ({ focused }) => (<Feather focused={focused}  name="activity" size={20} />)}}
+            <Tab.Screen
+                name="Report"
+                component={ReportStack}
+                options={{
+                    tabBarLabel: "Report",
+                    tabBarColor: "#006281",
+                    tabBarIcon: ({ focused }) => (<Ionicons focused={focused} name="ios-paper-plane" size={20} />)
+                }}
             />
-            <Tab.Screen 
-            name="Settings" 
-            component={SettingsStack} 
-            options={{
-                tabBarLabel: "Settings",
-                tabBarColor: "#04f291",
-                tabBarIcon: ({focused}) => (<Ionicons focused={focused} name="ios-settings" size={20} />)}} 
+            <Tab.Screen
+                name="Vitals"
+                component={VitalsStack}
+                options={{
+                    tabBarLabel: "Vitals",
+                    tabBarColor: "#099999",
+                    tabBarIcon: ({ focused }) => (<Feather focused={focused} name="activity" size={20} />)
+                }}
+            />
+            <Tab.Screen
+                name="Settings"
+                component={SettingsStack}
+                options={{
+                    tabBarLabel: "Settings",
+                    tabBarColor: "#04f291",
+                    tabBarIcon: ({ focused }) => (<Ionicons focused={focused} name="ios-settings" size={20} />)
+                }}
             />
 
 

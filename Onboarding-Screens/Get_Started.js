@@ -6,18 +6,20 @@ import { TextInput } from 'react-native-paper'
 
 import { useMutation } from '@apollo/react-hooks'
 
-import { VERIFY_USER } from '../graphQL/Query'
+import { REGISTER_USER } from '../graphQL/Query'
 
 
 
 const Get_Started = ({ navigation }) => {
 
     const [contactNumber, setContactNumber] = useState('')
-    const [loginUserOutput, {data, loading, eror}] = useMutation(VERIFY_USER)
+    const [loginUserOutput, {data, loading, eror}] = useMutation(REGISTER_USER)
+    
     const submitContactNumber = () => {
         setContactNumber('');
         loginUserOutput({
-            variables: { contactNumber }
+            variables: { contactNumber },
+           // Try again ;)
         });
         navigation.navigate("Verification", {contactNumber})
     }

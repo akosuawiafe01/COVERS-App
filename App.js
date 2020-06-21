@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, AppRegistry } from 'react-native';
 import Constants from 'expo-constants'
 
 import ApolloClient from 'apollo-client'
@@ -51,6 +51,9 @@ export default function App() {
     </ApolloProvider>
   );
   }
+
+
+  AppRegistry.registerComponent('App')
 
 const styles = StyleSheet.create({
   container: {
