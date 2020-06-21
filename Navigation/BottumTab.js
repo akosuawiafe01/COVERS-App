@@ -7,6 +7,11 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'
 
+//Onboarding screens
+import General_Info from '../Screens/Onboarding-Screens/General_Info'
+import Get_Started from '../Screens/Onboarding-Screens/Get_Started'
+import Verification from '../Screens/Onboarding-Screens/Verification'
+
 
 //Screens
 import Home from '../Screens/Home'
@@ -37,6 +42,23 @@ const stackOptions = {
                 </View>
 }
 
+
+const OnboardingStack = () => {
+    return(
+        <Stack.Navigator >
+ 
+        <Stack.Screen name="Get_Started" component={Get_Started} 
+           options={stackOptions} 
+
+       />
+
+       <Stack.Screen name="General_Info" component={General_Info} />
+       <Stack.Screen name="Verification" component={Verification} />
+
+   </Stack.Navigator>  
+    )
+}
+
 const HomeStack = () => {
 
         return(
@@ -48,6 +70,7 @@ const HomeStack = () => {
         />
 
         <Stack.Screen name="Profile" component={Profile} />
+        <Stack.Screen name="Notification" component={Notification} />
 
     </Stack.Navigator>
     )
@@ -66,6 +89,8 @@ const ReportStack = () => {
             <Stack.Screen name="MakeReport" component={MakeReport} />
             <Stack.Screen name="CaseReports" component={CaseReports} />
             <Stack.Screen name="DisplayReports" component={DisplayReports} />
+            <Stack.Screen name="Profile" component={Profile} />
+            <Stack.Screen name="Notification" component={Notification} />
         </Stack.Navigator>
     )
 }
@@ -81,7 +106,8 @@ const VitalsStack = () => {
          />
 
         <Stack.Screen name="LogSymptoms" component={LogSymptoms} />
-
+        <Stack.Screen name="Profile" component={Profile} />
+        <Stack.Screen name="Notification" component={Notification} />
 
         </Stack.Navigator>
     )
@@ -98,6 +124,9 @@ const SettingsStack = () => {
             options={stackOptions} 
     
             />
+        <Stack.Screen name="Profile" component={Profile} />
+        <Stack.Screen name="Notification" component={Notification} />
+
         </Stack.Navigator>
     )
 }
@@ -109,7 +138,7 @@ const SettingsStack = () => {
 const BottumTab = ( ) => {
     return(
         <Tab.Navigator 
-        initialRouteName="Home"
+        initialRouteName="Get_Started"
         tabBarOptions={{
             activeTintColor: "#006211",
             headerRight: ({ focused }) => ( <Entypo  focused={focused} name="home" size={20} />),
@@ -118,6 +147,18 @@ const BottumTab = ( ) => {
             }
         }}
         >
+            <Tab.Screen 
+            name="Get_Started" 
+            component={OnboardingStack}  
+            options={{
+                tabBarLabel:"Home",
+                tabBarColor: "#006211",
+                tabBarIcon: ({ focused }) => ( <Entypo  focused={focused} name="home" size={20} />),
+
+            }} 
+                
+             />
+
             <Tab.Screen 
             name="Home" 
             component={HomeStack}  

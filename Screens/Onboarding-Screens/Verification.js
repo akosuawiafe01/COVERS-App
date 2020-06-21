@@ -2,13 +2,23 @@
 
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
-import { useState } from 'react';
+
 // import { TextInput } from 'react-native-paper'
 
+import { useMutation } from '@apollo/react-hooks'
 
-const Verification = () => {
 
-    const [phoneNumber, setPhoneNumber] = useState("0244637262");
+const Verification = ({ navigation }) => {
+
+    const [loginUserOutput, {data, loading, eror}] = useMutation(VERIFY_USER)
+    const submitCode = () => {
+        setText('');
+        loginUserOutput({
+            variables: { text, "Successful" }
+        });
+        
+    }
+    
 
     return(
         <View style={styles.container}>
@@ -18,13 +28,13 @@ const Verification = () => {
 
         <View style={styles.inputs}>
             <TextInput>Enter Code</TextInput>
-            <Button title={"Submit Code"} color={"#006211"} />
+            <Button title={"Submit Code"} color={"#006211"} onPress={navigation.navigate("General_Info")} />
         </View>
 
 
         <View style={styles.activate}>
-            <Text>Have not recieved your code?</Text>
-            <Text>Resend</Text>
+
+            <Text>Resend code</Text>
         </View>
 
 
