@@ -8,9 +8,9 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'
 
 //Onboarding screens
-import General_Info from '../Screens/Onboarding-Screens/General_Info'
-import Get_Started from '../Screens/Onboarding-Screens/Get_Started'
-import Verification from '../Screens/Onboarding-Screens/Verification'
+import General_Info from '../Onboarding-Screens/General_Info'
+import Get_Started from '../Onboarding-Screens/Get_Started'
+import Verification from '../Onboarding-Screens/Verification'
 
 
 //Screens
@@ -47,7 +47,7 @@ const OnboardingStack = () => {
     return(
         <Stack.Navigator >
  
-        <Stack.Screen name="Get_Started" component={Get_Started} 
+        <Stack.Screen name="Get Started" component={Get_Started} 
            options={stackOptions} 
 
        />
@@ -138,7 +138,7 @@ const SettingsStack = () => {
 const BottumTab = ( ) => {
     return(
         <Tab.Navigator 
-        initialRouteName="Get_Started"
+        initialRouteName="Home"
         tabBarOptions={{
             activeTintColor: "#006211",
             headerRight: ({ focused }) => ( <Entypo  focused={focused} name="home" size={20} />),

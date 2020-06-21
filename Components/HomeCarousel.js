@@ -20,6 +20,8 @@ const HomeCarousel = ({ data }) => {
             keyExtractor={(item,index)=>String(index)}
             renderItem={({item}) =>  
             <HomeCarouselItem label={item[0]} value={item[1]} /> 
+            
+            
             }
 
             />

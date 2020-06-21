@@ -38,7 +38,7 @@ const Home = ({ navigation }) => {
         {
             loading ? <ActivityIndicator large color="#006211" />
                        : <View>
-                            <HomeCarousel data={ casesData.globalTotal } />
+                            <HomeCarousel data={ casesData.globalTotal} />
                         </View> 
                                 
                     }
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
         right: 0,
         bottom: 0,
       },
-
+ 
 });
 
 export default Home;

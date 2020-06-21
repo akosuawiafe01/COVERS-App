@@ -1,5 +1,5 @@
 import gql from 'graphql-tag'
-import { exp } from 'react-native-reanimated';
+
 
 
 export const GET_CASES = gql`
@@ -18,9 +18,9 @@ export const GET_CASES = gql`
 
 export const VERIFY_USER = gql`
 
-mutation LoginUserOutput{
-  loginUser($input: {String!} ){
-    message: "Registration Successful"
+mutation LoginUserOutput($input: String! ){
+  loginUser{
+    message,
     success
   }
   

@@ -1,12 +1,29 @@
                                                     // OnboardingScreen 1: Getting Started
 
-import React from 'react';
+import React,{ useState } from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native'
 import { TextInput } from 'react-native-paper'
+
+import { useMutation } from '@apollo/react-hooks'
+
+import { VERIFY_USER } from '../graphQL/Query'
 
 
 
 const Get_Started = ({ navigation }) => {
+
+    const [contactNumber, setContactNumber] = useState('')
+    const [loginUserOutput, {data, loading, eror}] = useMutation(VERIFY_USER)
+    const submitContactNumber = () => {
+        setContactNumber('');
+        loginUserOutput({
+            variables: { contactNumber }
+        });
+        navigation.navigate("Verification", {contactNumber})
+    }
+
+        
+
     return(
         <View style={styles.container}>
 
@@ -21,14 +38,30 @@ const Get_Started = ({ navigation }) => {
 
 
             <View style={ styles.inputs } >
-                <TextInput placeholder="Phone Number" autoCorrect={false} label="Phone Number" color="#006211" />
-                <Button title="Get Started" color="#006211" onPress={() => navigation.navigate("General_Info")} />
+                <TextInput placeholder="Phone Number" autoCorrect={false} 
+                label="Phone Number" 
+                color="#006211" 
+                editable={true}
+                value={contactNumber}
+               onChangeText={setContactNumber}
+               maxLength={10}
+               
+                />
+
+                <Button title="Get Started" 
+                onPress={submitContactNumber} 
+                disabled={contactNumber === ''}
+                 color="#006211" 
+              />
+
             </View>
 
 
         </View>
     )
-} 
+}
+
+
 
 
 const styles = StyleSheet.create({

@@ -1,39 +1,47 @@
                                                      // OnboardingScreen 2: Verification Page
 
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
-// import { TextInput } from 'react-native-paper'
+import { TextInput } from 'react-native-paper'
 
 import { useMutation } from '@apollo/react-hooks'
 
 
-const Verification = ({ navigation }) => {
 
-    const [loginUserOutput, {data, loading, eror}] = useMutation(VERIFY_USER)
-    const submitCode = () => {
-        setText('');
-        loginUserOutput({
-            variables: { text, "Successful" }
-        });
+const Verification = ({ route, navigation }) => {
+
+    const { contactNumber  } = route.params 
+    const [pin, setPin] = useState('')
+    const submitPin = () => {
+        setPin('');
         
+        navigation.navigate("General_Info")
     }
     
-
+    
+    
     return(
         <View style={styles.container}>
             <Text style={styles.title} >Verification Pin</Text>
 
-            <Text style={{padding: 5}}>Enter the verfication code we just sent you on {phoneNumber}</Text>
+    <Text style={{padding: 5}}>Enter the verfication code we just sent you on {contactNumber}</Text>
 
         <View style={styles.inputs}>
-            <TextInput>Enter Code</TextInput>
-            <Button title={"Submit Code"} color={"#006211"} onPress={navigation.navigate("General_Info")} />
+            <TextInput 
+            placeholder="Input Verification Code"
+            color="#006211"
+            label="Verification Code"
+            maxLength={5}
+            autoCorrect={false}
+            />
+            <Button title={"Submit Code"}   color={"#006211"} onPress={submitPin} />
         </View>
 
-
+        
         <View style={styles.activate}>
 
+        
             <Text>Resend code</Text>
         </View>
 
