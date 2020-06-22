@@ -46,6 +46,7 @@ return(
                     <Image source={{ uri: selectedCountries[0].flag }} style={{ ...styles.image, marginRight: 5 }} />
                 </Card>
             </TouchableNativeFeedback>
+            
             <TouchableNativeFeedback onPress={() => {
                 setCurrentCountryIndex(1);
                 setModalVisible(true);

@@ -4,6 +4,11 @@ import { Ionicons, Foundation, Entypo } from '@expo/vector-icons';
 
 import CountriesModal from '../Components/CountriesModal'
 
+//Graph data should be placed here
+import { COUNTRY_STATS } from '../graphQL/Query'
+
+import { useQuery, useMutation } from '@apollo/react-hooks';
+
 
 
 const Statistics = () => {
@@ -18,33 +23,23 @@ const Statistics = () => {
             "flag": "https://disease.sh/assets/img/flags/gh.png"
         },])
 
+       // const [countStats, updateCountStats] = useQuery(COUNTRY_STATS);
+       const {loading, data, error} = useQuery(COUNTRY_STATS);
+       const [confirmedStat, setConfirmedStats] = useState(0)
+       const [recovStat, setRecoveredStats] = useState(0)
+       const [deathStat, setDeathStats] = useState(0)
+       const [activeStat, setActiveStats] = useState(0)
+       const [criticalStat, setCriticalStats] = useState(0)
+       const [testsStat, setTestsStats] = useState(0)
+
+
 
     return (
-        <View style={styles.container}>
+        <View style={{...styles.container, alignContent: "center", justifyContent: "center"}}>
 
           
-            <View style={{marginTop: 50, paddingHorizontal: 10 }}>
-                <View style={styles.card}>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
-                        <Ionicons name='ios-globe' size={22} color='blue' />
-                        <Text style={{ fontSize: 22, marginLeft: 10 }}>Worldwide Statistics</Text>
-                    </View>
-                    <View style={{ flexDirection: 'row' }}>
-                        <View style={{ flex: 1, borderRightColor: '#e0e0e0', borderRightWidth: 1 }}>
-                            <Text style={styles.statsCaption}>Cases</Text>
-                            <Text style={styles.statsNumber}>1,234,567</Text>
-                        </View>
-                        <View style={{ flex: 1, borderRightColor: '#e0e0e0', borderRightWidth: 1, paddingLeft: 5 }}>
-                            <Text style={styles.statsCaption}>Recoveries</Text>
-                            <Text style={styles.statsNumber}>1,234</Text>
-                        </View>
-                        <View style={{ flex: 1, paddingLeft: 5 }}>
-                            <Text style={styles.statsCaption}>Deaths</Text>
-                            <Text style={styles.statsNumber}>12,345</Text>
-                        </View>
-                    </View>
-                </View>
-
+            <View style={{ paddingHorizontal: 10 }}>
+     
                 <Text style={styles.selectCountryText}>Select country:</Text>
 
                 <TouchableNativeFeedback onPress={() => {
@@ -53,7 +48,7 @@ const Statistics = () => {
             }}>
                 <View style={[styles.card, { flexDirection: 'row', alignItems: 'center', marginBottom: 10 }]}>
                     <Image source={{ uri: selectedCountry[0].flag }} style={styles.flag} />
-                    <Text style={styles.countryText}>Ghana</Text>
+                    <Text style={styles.countryText}>{selectedCountry[0].name }</Text>
                     <Entypo name='chevron-small-down' size={20} />
                 </View>
 
@@ -68,31 +63,31 @@ const Statistics = () => {
                         <View style={{ flex: 1, borderRightColor: '#e0e0e0', borderRightWidth: 1 }}>
                             <View style={{ marginBottom: 10 }}>
                                 <Text style={styles.statsCaption}>Confirmed</Text>
-                                <Text style={styles.statsNumber}>1,550</Text>
+                        <Text style={styles.statsNumber}> {confirmedStat} </Text>
                             </View>
                             <View>
                                 <Text style={styles.statsCaption}>Active</Text>
-                                <Text style={styles.statsNumber}>1,384</Text>
+                                <Text style={styles.statsNumber}> {activeStat} </Text>
                             </View>
                         </View>
                         <View style={{ flex: 1, paddingLeft: 5, borderRightColor: '#e0e0e0', borderRightWidth: 1 }}>
                             <View style={{ marginBottom: 10 }}>
                                 <Text style={styles.statsCaption}>Recovered</Text>
-                                <Text style={styles.statsNumber}>155</Text>
+                                <Text style={styles.statsNumber}> {recovStat} </Text>
                             </View>
                             <View>
                                 <Text style={styles.statsCaption}>Critical</Text>
-                                <Text style={styles.statsNumber}>4</Text>
+                                <Text style={styles.statsNumber}> {criticalStat} </Text>
                             </View>
                         </View>
                         <View style={{ flex: 1, paddingLeft: 5 }}>
                             <View style={{ marginBottom: 10 }}>
                                 <Text style={styles.statsCaption}>Deaths</Text>
-                                <Text style={styles.statsNumber}>11</Text>
+                                <Text style={styles.statsNumber}> {deathStat} </Text>
                             </View>
                             <View>
                                 <Text style={styles.statsCaption}>Tests</Text>
-                                <Text style={styles.statsNumber}>100622</Text>
+                                <Text style={styles.statsNumber}> {testsStat} </Text>
                             </View>
                         </View>
                     </View>

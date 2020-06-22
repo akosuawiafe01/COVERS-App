@@ -3,17 +3,24 @@ import { View, StyleSheet, Text, Image, Dimensions, ImageBackground,  } from 're
 import { Card } from 'react-native-paper'
 const { width, height } = Dimensions.get('window')
 
+const imgBack = require("../assets/COVID19-1.jpg")
+
 const HomeCarouselItem = ( {label,value } ) => {
 
 
 
     return (
+        <ImageBackground source={imgBack} style={styles.cardView}>
         <View style={styles.cardView}>
             <View style={styles.textView}>
-                <Text style={styles.itemTitle}> {label}</Text>
-                <Text style={styles.itemDescription}>{value}</Text>
+               
+                    <Text style={styles.itemTitle}> {label}</Text>
+                    <Text style={styles.itemDescription}>{value}</Text>
+
             </View>
         </View>
+
+        </ImageBackground>
     )
 }
 
@@ -22,7 +29,7 @@ const styles = StyleSheet.create({
         flex: 1,
         width: width - 20,
         height: height / 3,
-        backgroundColor: "#006211",
+        //backgroundColor: "#006211",
         margin: 10,
         borderRadius: 10,
         shadowOffset: { width: 0.5, height: 0.5 },
@@ -35,14 +42,10 @@ const styles = StyleSheet.create({
         margin: 10,
         left: 5,
     },
-    image: {
-        // width: width - 20,
-        // height: height / 3,
-        borderRadius: 10
-    },
+ 
     itemTitle: {
-        color: 'white',
-        fontSize: 22,
+        //color: 'white',
+        fontSize: 25,
         shadowColor: '#000',
         shadowOffset: { width: 0.8, height: 0.8 },
         shadowOpacity: 1,
@@ -52,7 +55,7 @@ const styles = StyleSheet.create({
         elevation: 5
     },
     itemDescription: {
-        color: 'white',
+        //color: 'white',
         fontSize: 12,
         shadowColor: '#000',
         shadowOffset: { width: 0.8, height: 0.8 },
