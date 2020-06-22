@@ -57,25 +57,7 @@ export default function App() {
                     <Stack.Screen name="General_Info" component={General_Info} />
                 
                     <Stack.Screen name="Home" component={BottumTab}  />
-                    
-                    {/* // Reload
-                    it's still giving the same error
-                    which error? Can't see from here...terminal is messed up...
-                    Im coming
-                    ok
-                    This is it: 
-                    Another navigator is already registered for this container. You likely have multiple navigators under a single "NavigationContainer" or "Screen". Make sure each navigator is under a separate "Screen" container. See https://reactnavigation.org/docs/nesting-navigators for a guide on nesting.
-                    Try again
-                    >>It's working now, thanks
-                    
-                    welcome
-                    Now please go to settings and tap the testing centers option
-
-                    >>the otp isn't working: 🤢
-                    lol I can't see that emoji xD
-                  Ok seen
-                  >>you can see the app now?
-                    */}
+ 
               </Stack.Navigator>
         </View>
 

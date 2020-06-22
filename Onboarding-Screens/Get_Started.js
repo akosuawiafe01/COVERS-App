@@ -16,10 +16,10 @@ const Get_Started = ({ navigation }) => {
     const [loginUserOutput, {data, loading, eror}] = useMutation(REGISTER_USER)
     
     const submitContactNumber = () => {
-        setContactNumber('');
+         setContactNumber('');
         loginUserOutput({
-            variables: { contactNumber },
-           // Try again ;)
+        variables: { contactNumber },
+          
         });
         
         navigation.navigate("Verification", {contactNumber})
@@ -48,12 +48,13 @@ const Get_Started = ({ navigation }) => {
                 value={contactNumber}
                onChangeText={setContactNumber}
                maxLength={10}
-               
+               keyboardType={"phone-pad"}
                 />
 
                 <Button title="Get Started" 
                 onPress={submitContactNumber} 
                 disabled={contactNumber === ''}
+                
                  color="#006211" 
               />
 

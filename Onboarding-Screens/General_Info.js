@@ -1,4 +1,4 @@
-                                                    // OnboardingScreen 3: Getting Started 
+                                                    // OnboardingScreen 3: General Info 
 
 import React from 'react'
 import { Text, View, StyleSheet, ScrollView } from 'react-native'
@@ -6,7 +6,8 @@ import { Text, View, StyleSheet, ScrollView } from 'react-native'
 import { Card, Button, TextInput, } from 'react-native-paper'
 import { FlatList } from 'react-native-gesture-handler'
 
-const generalInfo = [ {key: "Background", title: "Background", info: "Citizens are advised to provide accurate information to this applicationto support the government and health services in managing and accurately containing the spread of coronavirus."},
+const generalInfo = [ 
+ {key: "Background", title: "Background", info: "Citizens are advised to provide accurate information to this applicationto support the government and health services in managing and accurately containing the spread of coronavirus."},
  {key: "Collection of your Information",title: "Collection of your Information",  info: "We may collect information about you in avariety of ways. The information we may collect via the Application depends on the content and materials you use, and includes: "},
  {key: "Personal Information", title: "Personal Information", info: "Demographic and other personally identifiable information that you voluntarily give to us while using this application is anonymized and is only made available to the relevant authorities in case of emergency."},
  {key: "Geo-Location Information",title: "Geo-Location Information", info: "We may request access or permission to track location-based information from your mobile device, either conciously while you are using the application to provide location-based services. If you wish to change our access or permissions you may do so in your device's settings."},
@@ -17,19 +18,22 @@ const generalInfo = [ {key: "Background", title: "Background", info: "Citizens a
  {key: "Options Regarding your Information", title: "Options Regarding your Information", info: null},
  {key: "Contact Us", title: "Contact Us", info: "If you have questions or comment about this Privacy Policy, please contact us..."}]
 
-const FlatListItem = ({ title, info }) => {
-    return(
-        <View styles={{paddingLeft: 10, flex: 1}}>
-
-            <Text style={styles.title} >{ title }</Text>
-
-            <Text>{ info }</Text>
-
-        </View>
-    )
-}
 
 const General_Info = ({navigation}) => {
+
+    const FlatListItem = ({ title, info }) => {
+        return(
+            <View styles={{paddingLeft: 10, flex: 1}}>
+    
+                <Text style={styles.title} >{ title }</Text>
+    
+                <Text>{ info }</Text>
+    
+            </View>
+        )
+    }
+    
+
     return(
 
         <View>
@@ -41,9 +45,9 @@ const General_Info = ({navigation}) => {
          }
          />  
 
-         <Text>Hello</Text> 
+         
 
-         <Button color={"#006211"} mode={"contained"} onPress={navigation.navigate("Verification")} >Let's get started...</Button>
+         <Button color={"#006211"} mode={"contained"} onPress={navigation.navigate("Home")} >Let's get started...</Button>
             
         </View> 
     )

@@ -41,7 +41,7 @@ const TestingCenters = () => {
                             <FontAwesome5 name="map-marked-alt" size={24} color="black" />
                         </View>
                     } />
-                    :<Text>Error</Text>
+                    :<Text>Error! Check your Internet connection</Text>
             }
 
         </View>
