@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { Text, View, Button, StyleSheet, ScrollView, Alert, FlatList, Dimensions, TouchableNativeFeedback, Image } from 'react-native'
 import { Card  } from 'react-native-paper'
-import { exp } from 'react-native-reanimated'
+
 import CountriesModal from '../Components/CountriesModal'
 
 
@@ -46,7 +46,6 @@ return(
                     <Image source={{ uri: selectedCountries[0].flag }} style={{ ...styles.image, marginRight: 5 }} />
                 </Card>
             </TouchableNativeFeedback>
-            
             <TouchableNativeFeedback onPress={() => {
                 setCurrentCountryIndex(1);
                 setModalVisible(true);

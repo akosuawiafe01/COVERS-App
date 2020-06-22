@@ -1,107 +1,84 @@
 import React, {useState} from 'react'
-import { View, Text, StyleSheet, Button, Alert, FlatList } from 'react-native'
+import { View, Text, StyleSheet, Button, Alert, FlatList, Picker } from 'react-native'
 import { Card, TextInput, RadioButton  } from 'react-native-paper'
 
 
-const symptomDetails = [
-    {key: "1", symptom: "Log Symptoms",  }, {key: "2", symptom: "Dry Cough",  }, {key: "3", symptom: "Tiredness",  }, {key: "4", symptom: "Sore Throat",  }, {key: "5", symptom: "Fever",  }, {key: "6", symptom: "Aches and Pains",  }, {key: "7", symptom: "Shortness of Breath",  }, 
+const data = [
+    {key: "1", symptoms: "Dry Cough"}, 
+    {key: "2", symptoms: "Tiredness"  },
+     {key: "3", symptoms: "Sore Throat" }, 
+     {key: "4", symptoms: "Fever"  }, 
+     {key: "5", symptoms: "Aches and Pains"  }, 
+     {key: "6", symptoms: "Shortness of Breath"  }
 ];
 
 
 
 
-const ListSymptoms = ({symptom}) => {
-    const [reporter, updateReporter] = useState(null)
+
+const ListSymptoms = ( {item } )  => {
+    const [selectedValue, setSelectedValue] = useState("1");
+
     return(
-        <View >
-            <Card style={{
-            flex:1,
-            width: "100%", 
-            height:100, marginTop: 5
-            }} >
-            <Text  
-            style={{borderBottomColor: '#e0e0e0',  borderBottomWidth: 1, marginTop: 25,fontSize: 25, color:"#006211", fontWeight: "bold"}}>{symptom}</Text>
+        <Card>
+        <View style={styles.container}>
 
+          <Text style={{color: "#006211", fontSize: 20, }}>{item.symptoms}</Text>   
+        <Picker
+          selectedValue={selectedValue}
+          style={{ height: 50, width: 200, marginLeft: 20}}
+          onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+          mode="dropdown"
+          color={"#006211"}
+        >
+          <Picker.Item label="None" value="None" />
+          <Picker.Item label="Mild" value="Mild" />
+          <Picker.Item label="Semi Mild" value="Semi Mild" />
+          <Picker.Item label="High" value="High" />
+        </Picker> 
+      </View>
 
-            
-<RadioButton.Group 
-            onValueChange={(reporter) => updateReporter(reporter)}
-            value={reporter}
-            >
-            
-            <View style={{flexDirection: "row"}}>
-                    <RadioButton
-                    value={"none"} 
-                    status={ reporter === "none" ? "checked" : "unchecked" }
-                    color="#006211"
-                    />
-                    <Text style={{marginLeft: 10}} >0</Text>
-                </View>
-
-                <View style={{flexDirection: "row"}}>
-                <RadioButton
-                    value={"mild"} 
-                    status={ reporter === "mild" ? "checked" : "unchecked" }
-                    color="#006211"
-                    />
-                    <Text style={{marginLeft: 10}} >1</Text>
-
-
-
-                </View>
-
-                
-                <View style={{flexDirection: "row"}}>
-                <RadioButton
-                    value={"mild"} 
-                    status={ reporter === "mild" ? "checked" : "unchecked" }
-                    color="#006211"
-                    />
-                    <Text style={{marginLeft: 10}} >2</Text>
-
-                </View>
-
-
-                <View style={{flexDirection: "row"}}>         
-                <RadioButton
-                    value={"mild"} 
-                    status={ reporter === "mild" ? "checked" : "unchecked" }
-                    color="#006211"
-                    />
-                    <Text style={{marginLeft: 10}} >3</Text>
-
-                </View>
-
-                
-                <View style={{flexDirection: "row"}}>
-                <RadioButton
-                    value={"high"} 
-                    status={ reporter === "high" ? "checked" : "unchecked" }
-                    color="#006211"
-                    />
-                    <Text style={{marginLeft: 10}} >4</Text>
-
-                </View>
-
-            </RadioButton.Group>
-
-            </Card>
-        </View>
+      </Card>
     )
 }
 
-const LogSymptoms = () => {
+
+const LogSymptoms = ({navigation}) => {
+
+
+    
+const logVitals = () => {
+    Alert.alert("Vitals Logged")
+
+    navigation.navigate("Vitals", {})
+}
+
+
     return(
    <View>
     <FlatList
-data={symptomDetails}
-renderItem={(item) => 
-    <ListSymptoms symptom={item.symptom}/>        
+    data={data}
+    key={data.key}
+    renderItem={({item}) => 
+    <ListSymptoms item={item}/>        
 }
     />
+
+    <Button title={"Log Symptoms"}   color={"#006211"} onPress={logVitals} />
+
    </View>
     )
 }
+
+const styles = StyleSheet.create({
+    
+        container: {
+          flex: 1,
+          marginTop: 5, 
+          backgroundColor: "#e0e0e0"
+        }
+      
+})
 
 export default LogSymptoms;
 

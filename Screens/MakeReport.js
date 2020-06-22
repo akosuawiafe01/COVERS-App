@@ -63,7 +63,9 @@ const MakeReport = ({ navigation }) => {
                     <TextInput 
                     placeholder={"eg. GA-492-74"} 
                     onFocus={() => enableKeyboard(true)} 
-                    
+                    theme={{colors: {accent: 
+                        "#006211"
+                    }}}
                     color="#006211" 
                     editable={true}
                     value={location}

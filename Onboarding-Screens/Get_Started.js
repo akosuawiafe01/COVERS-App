@@ -21,6 +21,7 @@ const Get_Started = ({ navigation }) => {
             variables: { contactNumber },
            // Try again ;)
         });
+        
         navigation.navigate("Verification", {contactNumber})
     }
 

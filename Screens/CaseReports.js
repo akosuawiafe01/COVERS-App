@@ -11,18 +11,19 @@ const CaseReports = ({ navigation, route }) => {
     const {reporter, location, landmark, altContact, description} = route.params 
 
     const data = [
-        {id: "1", message: reporter},
-        {id: "2", message: location},
-        {id: "4", message: landmark},
-        {id: "6", message: altContact},
-        {id: "5", message: description}
+        {id: "1", reporter: reporter, location: location, landmark: landmark, altContact: altContact, description: description}
     ];
+
+  
 
     const ReportedCases = ({item}) => {
         return(
             <Card >
-                <Text>{item.message}</Text>
-                <Text>{item.time}</Text>
+                <Text>Individual: {item.reporter}</Text>
+                <Text>Location: {item.location}</Text>
+                <Text>Landmark: {item.landmark}</Text>
+                <Text>Contact: {item.altContact}</Text>
+                <Text>Description: {item.description}</Text>
         </Card>
         )
     }
