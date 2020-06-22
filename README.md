@@ -4,22 +4,7 @@ A COVID-19 tracking mobile app
 
 ### Student Details
 ID: 10685093
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Name: Wiafe-Akenten Akosua Nyarkoa
 
 
 
