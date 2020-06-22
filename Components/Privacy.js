@@ -4,11 +4,25 @@ import { Card  } from 'react-native-paper'
 
 const Privacy = () => {
     return(
-        <View>
-            
+        <View styles={styles.container} >
+            <Text style={styles.title} >Privacy</Text>
         </View>
     )
 }
+
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1
+    },
+    title: {
+        fontSize: 25,
+        color: "#006211",
+         fontWeight: "bold"
+    }
+
+})
+
 
 
 export default Privacy;

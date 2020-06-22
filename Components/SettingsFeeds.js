@@ -5,9 +5,6 @@ import { Card } from 'react-native-paper'
 
 
 
-import ModalComponent from '../Components/Modal'
-
-
 const SettingsFeed = ({ item }) => {
     return(
         <View style={{flex:1}} >

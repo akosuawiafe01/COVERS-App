@@ -5,27 +5,6 @@ import HomeCarouselItem from './HomeCarouselItem'
 
 
 const { width, height } = Dimensions.get('window')
- 
-
-// function infiniteScroll(dataList){
-//     const numberOfData = dataList.length
-//     let scrollValue = 0, scrolled = 0
-
-//     setInterval(function() {
-//         scrolled ++
-//         if(scrolled < numberOfData)
-//         scrollValue = scrollValue + width
-
-//         else{
-//             scrollValue = 0
-//             scrolled = 0
-//         }
-
-//         this.flatList.scrollToOffset({ animated: true, offset: scrollValue})
-        
-//     }, 3000)
-// }
-
 
 
 const HomeCarousel = ({ data }) => {

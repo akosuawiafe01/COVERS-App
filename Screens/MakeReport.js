@@ -1,11 +1,28 @@
 import React, {useState} from 'react'
-import { View, Text, StyleSheet, Alert, KeyboardAvoidingView } from 'react-native'
-import { TextInput, Button, RadioButton } from 'react-native-paper'
+import { View, Text, StyleSheet, Alert, KeyboardAvoidingView, Button } from 'react-native'
+import { TextInput, RadioButton } from 'react-native-paper'
 
-const MakeReport = () => {
+const MakeReport = ({ navigation }) => {
 
     const [reporter, updateReporter] = useState(null)
     const [keyboard, enableKeyboard] = useState(false)
+    const [location, setLocation] = useState("")
+    const [landmark, setLandmark] = useState("")
+    const [altContact, setAltContact] = useState("")
+    const [description, setDescription] = useState("")
+
+    const submitReport = () => {
+        // setContactNumber('');
+        
+        // loginUserOutput({
+        //     variables: { contactNumber },
+        //    // Try again ;)
+        // });
+        Alert.alert("Success", "Your report has been made successfully")
+        
+        navigation.navigate("MakeReport", {reporter, location, landmark, altContact, description})
+        
+    }
 
     return(
 
@@ -43,7 +60,17 @@ const MakeReport = () => {
 
             <View>
                     <Text>Location or Digital Address</Text>
-                    <TextInput placeholder={"eg. GA-492-74"} onFocus={() => enableKeyboard(true)} />
+                    <TextInput 
+                    placeholder={"eg. GA-492-74"} 
+                    onFocus={() => enableKeyboard(true)} 
+                    
+                    color="#006211" 
+                    editable={true}
+                    value={location}
+                    onChangeText={setLocation}
+                    />
+                    
+                    
                 </View>
 
      
@@ -54,7 +81,15 @@ const MakeReport = () => {
 
                     <View  >
                     <Text>Alternate Contact</Text>
-                    <TextInput placeholder={"Contact Number"} onFocus={() => enableKeyboard(true)} />
+                    <TextInput placeholder={"Alternate Contact Number"} 
+                    
+                    color="#006211" 
+                    editable={true}
+                    value={landmark}
+                    onChangeText={setAltContact}
+                    onFocus={() => enableKeyboard(true)} />
+
+                    
                 </View>
 
 
@@ -62,10 +97,20 @@ const MakeReport = () => {
                 <View>
                 </View>
                 <Text>description</Text>
-                <TextInput placeholder={"Type Something"} onFocus={() => enableKeyboard(true)} />
+                <TextInput placeholder={"Type Something"} 
+                
+                color="#006211" 
+                editable={true}
+                value={description}
+                onChangeText={setDescription}
+                
+                onFocus={() => enableKeyboard(true)} />
+
                 </View>
 
-            <Button onPress={() => Alert.alert("Success", "Your report has been made successfully")} >Report Case</Button>
+        <View style={{marginTop: 130, width: 120, marginLeft: 150}}>
+            <Button color="#006211" onPress={submitReport} title={"Report Case"} />
+        </View>
 
         </View>
 

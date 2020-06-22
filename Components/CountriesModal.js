@@ -50,7 +50,8 @@ const styles = StyleSheet.create({
         marginRight:20,
         height: 50,
         borderWidth: 1,
-        borderColor: "#e3e3e3"
+        borderColor: "#e3e3e3", 
+        width: 50
     },
     label: {
         fontSize: 17

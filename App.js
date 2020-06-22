@@ -14,10 +14,6 @@ import { NavigationContainer } from '@react-navigation/native'
 
 import BottumTab from './Navigation/BottumTab'
 
-import Notification from './Screens/Notification'
-import Profile from './Screens/Profile'
-
-
 
 const client = new ApolloClient({
   link: createHttpLink({ 
@@ -39,10 +35,7 @@ export default function App() {
         <View style={styles.container}>
 
           <BottumTab/>
-
-          {/* <Notification/> */}
-
-          {/* <Profile/>  */}
+      
         
         </View>
 

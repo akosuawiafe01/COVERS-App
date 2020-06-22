@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Image, TouchableNativeFeedback } from 'react-native'
-import { Entypo, Ionicons, Feather, AntDesign, EvilIcons } from '@expo/vector-icons'
+import { Entypo, Ionicons, Feather, AntDesign, EvilIcons, Foundation } from '@expo/vector-icons'
 
 //Bottum Tabs 
 import { NavigationContainer } from '@react-navigation/native'
@@ -22,8 +22,8 @@ import Profile from '../Screens/Profile'
 import Notification from '../Screens/Notification'
 import MakeReport from '../Screens/MakeReport'
 import CaseReports from '../Screens/CaseReports'
-import DisplayReports from '../Screens/DisplayReports'
 import LogSymptoms from '../Screens/LogSymptoms'
+import Statistics from '../Screens/Statistics'
 
 
 
@@ -35,7 +35,7 @@ const stackOptions = ({navigation})=>({
     headerLeft: () =>
         <TouchableNativeFeedback onPress={() => navigation.navigate("Profile")}>
             <View style={{ margin: 5 }} >
-                <Image style={{ width: 50, height: 50, borderRadius: 25 }} source={require('../assets/COVID19-1.jpg')} />
+                <Image style={{ width: 50, height: 50, borderRadius: 25 }} source={require('../assets/user-profile-icon-9.jpg')} />
             </View>
         </TouchableNativeFeedback>,
     headerRight: () =>
@@ -93,7 +93,6 @@ const ReportStack = () => {
             />
             <Stack.Screen name="MakeReport" component={MakeReport} />
             <Stack.Screen name="CaseReports" component={CaseReports} />
-            <Stack.Screen name="DisplayReports" component={DisplayReports} />
             <Stack.Screen name="Profile" component={Profile} />
             <Stack.Screen name="Notification" component={Notification} />
         </Stack.Navigator>
@@ -111,6 +110,25 @@ const VitalsStack = () => {
             />
 
             <Stack.Screen name="LogSymptoms" component={LogSymptoms} />
+            <Stack.Screen name="Profile" component={Profile} />
+            <Stack.Screen name="Notification" component={Notification} />
+
+        </Stack.Navigator>
+    )
+}
+
+
+
+const StatisticsStack = () => {
+    return (
+        <Stack.Navigator>
+            <Stack.Screen
+                name="Statistics"
+                component={Statistics}
+                options={stackOptions}
+            />
+
+            
             <Stack.Screen name="Profile" component={Profile} />
             <Stack.Screen name="Notification" component={Notification} />
 
@@ -171,7 +189,7 @@ const BottumTab = () => {
                 component={ReportStack}
                 options={{
                     tabBarLabel: "Report",
-                    tabBarColor: "#006281",
+                    tabBarColor: "#099999",
                     tabBarIcon: ({ focused }) => (<Ionicons focused={focused} name="ios-paper-plane" size={20} />)
                 }}
             />
@@ -183,16 +201,34 @@ const BottumTab = () => {
                     tabBarColor: "#099999",
                     tabBarIcon: ({ focused }) => (<Feather focused={focused} name="activity" size={20} />)
                 }}
+
             />
+
+
+                
+            <Tab.Screen
+                name="Statistics"
+                component={StatisticsStack}
+                options={{
+                    tabBarLabel: "Statistics",
+                    tabBarColor: "#099999",
+                    tabBarIcon: ({ focused }) => (<Foundation name='graph-bar' focused={focused} size={20} />)
+                }}
+
+                />
+
             <Tab.Screen
                 name="Settings"
                 component={SettingsStack}
                 options={{
                     tabBarLabel: "Settings",
-                    tabBarColor: "#04f291",
+                    tabBarColor: "#006211",
                     tabBarIcon: ({ focused }) => (<Ionicons focused={focused} name="ios-settings" size={20} />)
                 }}
             />
+
+            
+
 
 
         </Tab.Navigator>

@@ -10,12 +10,8 @@ const Report = ({ navigation }) => {
     return(
         <View style={styles.container} > 
 
-            {/* <View style={styles.title}>
-                <Text style={{fontSize: 15, fontWeight: "bold"} }>Report</Text>
-            </View> */}
-
             <View style={{flex: 1, alignItems: "center", justifyContent: "center"}} >
-                <Text >You have not reported any case yet</Text>
+                <Text >Report a Case</Text>
             </View>
 
             <FAB

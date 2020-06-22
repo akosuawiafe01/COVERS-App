@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, Alert, Image, KeyboardAvoidingView,TouchableNativeFeedback } from 'react-native';
+import { StyleSheet, Text, View, Button, Alert, KeyboardAvoidingView } from 'react-native';
 import { Card, TextInput, RadioButton } from 'react-native-paper';
-import CountriesModal from '../Components/CountriesModal';
+
+import ListCountries from '../Components/ListCountries'
 
 const Profile = () => {
 
@@ -12,20 +13,7 @@ const Profile = () => {
 
     const [gender, updateGender] = useState(null);
     const [keyboard, enableKeyboard] = useState(false)
-    const [modalVisible, setModalVisible] = useState(false);
-    const [currentCountryIndex, setCurrentCountryIndex] = useState(-1);
-    const [selectedCountries, setSelectedCountries] = useState([
-        {
-            "id": "0",
-            "name": "None",
-            "flag": "https://disease.sh/assets/img/flags/unknown.png"
-        },
-        {
-            "id": "0",
-            "name": "None",
-            "flag": "https://disease.sh/assets/img/flags/unknown.png"
-        }
-    ]);
+ 
 
     return (
         <>
@@ -77,39 +65,7 @@ const Profile = () => {
 
                     </View>
 
-
-                    <View style={{ marginTop: 10 }} >
-
-                        <Card style={styles.card}>
-                            <Text style={{ ...styles.title, alignSelf: "auto" }} >Travel History</Text>
-                            <Text>Select the last 2 countries you have visted (if applicable) </Text>
-
-
-
-                            <View style={{ flexDirection: "row", alignSelf: "center", margin: 10 }}>
-
-                                <TouchableNativeFeedback onPress={() => {
-                                    setCurrentCountryIndex(0);
-                                    setModalVisible(true);
-                                }}>
-                                    <Card>
-                                        <Image source={{ uri: selectedCountries[0].flag }} style={{ ...styles.image, marginRight: 5 }} />
-                                    </Card>
-                                </TouchableNativeFeedback>
-                                <TouchableNativeFeedback onPress={() => {
-                                    setCurrentCountryIndex(1);
-                                    setModalVisible(true);
-                                }}>
-                                    <Card>
-                                        <Image source={{ uri: selectedCountries[1].flag }} style={{ ...styles.image, marginLeft: 10 }} />
-                                    </Card>
-                                </TouchableNativeFeedback>
-                            </View>
-
-
-                        </Card>
-
-                    </View>
+                    <ListCountries/>
 
                     <View style={{ marginTop: 10 }}>
                         <Card style={styles.card} >
@@ -135,12 +91,7 @@ const Profile = () => {
                 </View>
 
             </KeyboardAvoidingView>
-            <CountriesModal visible={modalVisible} onRequestClose={() => setModalVisible(false)}
-                onSelectCountry={(country) => {
-                    selectedCountries[currentCountryIndex] = country;
-                    setSelectedCountries(selectedCountries);
-                    setModalVisible(false);
-                }} />
+           
         </>
     )
 }

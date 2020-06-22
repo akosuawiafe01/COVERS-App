@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Image, Dimensions, FlatList, Animated   } from 
 import { Card, RadioButton, FAB, ActivityIndicator, TextInput } from 'react-native-paper'
 
 import HomeCarousel from '../Components/HomeCarousel'
-//import Carousel from '../Components/Carousel'
+import FAQs from '../Components/FAQs'
 
 
 
@@ -31,60 +31,26 @@ const Home = ({ navigation }) => {
 
     return(
         <View style={styles.container}>
-        
-        {/* <View style={{padding: 5}}>
-            <TextInput 
-            placeholder="Country Specific Statistics"
-            color="#006211"
-            label="Search for a country"
-           </View>
-            /> */}
+            
+            <View>
+                
+                <Text style={{fontSize: 20, }}>Worldwide Statistics
+</Text>          
+            </View>
       
-
         <View style={{ marginBottom: StyleSheet.hairlineWidth, borderBottomWidth: 0.5, borderBottomColor: "#e0e0e0", marginTop: 50,  }}> 
  
         {
             loading ? <ActivityIndicator large color="#006211" />
-                       : <View>
+                       : casesData ? <View>
                             <HomeCarousel data={ casesData.globalTotal} />
                         </View> 
-                                
+                        : casesError ? <Card>
+                            <Text>An error occured </Text>
+                        </Card>
+                        : null        
                     }
-
-    
         </View>
-
-        
-
-
-
-        
-
-        <View style={{ borderBottomWidth: 0.5, borderBottomColor: "#e0e0e0", marginTop: 10 }} >
-            <Text style={{fontSize: 15, fontWeight: "bold" }}>Ghana's Situation Updates</Text>
-            <Text>Last Update: date</Text>
-        
-        </View>
-
-
-        
-        <View>
-            <Text style={{fontSize: 15, fontWeight: "bold", borderBottomWidth: 0.5, borderBottomColor: "#e0e0e0" }}>Confirmed COVID-19 cases in Ghana as at date, time </Text>
-            
-        
-        </View>
-
-        <FAB
-    style={styles.fab}
-    large
-    icon="plus"
-    color="#ffffff"
-    theme={{colors: {accent: 
-        "#006211"
-    }}}
-    onPress={() => navigation.navigate("Profile") }
-  />
-
 
         </View>
     )
