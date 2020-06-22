@@ -13,14 +13,18 @@ const Verification = ({ route, navigation }) => {
 
     const { contactNumber  } = route.params 
     const [pin, setPin] = useState('')
-    const submitPin = () => {
-        setPin('');
-        
-        navigation.navigate("General_Info")
-    }
+    // const submitPin = () => {
+    //     setPin('');
+    //     navigation.navigate("General_Info")
+    // }
     
-    const [validateUser, { loading, data, error }] = useMutation(VERIFY_USER);
-    const [resend, showresend] = useState(false)
+    const [validateUser, { loading, data, error }] = useMutation(VERIFY_USER, 
+        {
+            variables: contactNumber,
+            onCompleted: navigation.navigate("General_Info")
+        } 
+        );
+    
     return(
         <View style={styles.container}>
             <Text style={styles.title} >Verification Pin</Text>
@@ -32,15 +36,16 @@ const Verification = ({ route, navigation }) => {
             placeholder="Input Verification Code"
             color="#006211"
             label="Verification Code"
+            keyboardType="numeric"
             maxLength={5}
             autoCorrect={false}
             />
-            <Button title={"Submit Code"}   color={"#006211"} onPress={submitPin} />
+            <Button title={"Submit Code"}   color={"#006211"} onPress={validateUser} />
         </View>
 
         
         <View style={styles.activate}>
-            <Text onPress={() =>Alert.alert("A new verification pin has been sent to ",`${contactNumber}` )}>Resend code</Text>
+            <Text onPress={() => Alert.alert("Code resent to ", `${contactNumber}` )}>Resend code</Text>
         </View>
 
 

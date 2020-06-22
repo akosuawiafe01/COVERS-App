@@ -6,25 +6,21 @@ import HomeCarousel from '../Components/HomeCarousel'
 import FAQs from '../Components/FAQs'
 
 
-
-//Graph data should be placed here
  import { GET_CASES } from '../graphQL/Query'
 
 import { useQuery } from '@apollo/react-hooks';
 
 const { width, height } = Dimensions.get('window')
 
-const Home = ({ navigation }) => {
+const tips = [
+   {key: "1", tip: "STAY home as much as you can"}, 
+   {key: "2", tip: "KEEP a safe distance"},
+   {key: "3", tip: "WASH hands often"},
+   {key:"4", tip: "COVER your cough" },
+   {key: "5", tip: "SICK? Call ahead"}
+]
 
-    // useEffect(
-    //     {data, errors } = await fetch("http://covid19-graphql.netlify.com/", {
-    //    headers: {
-    //        'Content-Type': 'application/json',
-    //        Accept: 'application/json'
-    //    }, body = JSON.stringify({query: "My query"}, {variables: 'my variables'}).then(res => res.json())
-   
-    //    //setData(data), setErrors(errors)
-    //    }), [])
+const Home = ({ navigation }) => {
 
      const {loading, data: casesData, error: casesError} = useQuery(GET_CASES);
 
@@ -50,7 +46,26 @@ const Home = ({ navigation }) => {
                         </Card>
                         : null        
                     }
+
         </View>
+
+        <Card style={{flex: 1, padding: 10}}>
+            <Text style={styles.title}>Safety Tips: </Text>
+       
+            <FlatList
+            data={tips}
+            key={tips.key}
+            renderItem={({item}) => 
+            
+                <View>
+                
+                   <Text>{item.tip}</Text>
+                </View>
+            
+        }
+            />
+
+</Card>
 
         </View>
     )
@@ -64,6 +79,13 @@ const styles = StyleSheet.create({
     }, card: {
         marginTop: 5,
         
+
+    },
+    title: {
+        fontSize: 20,
+        color: "#006211",
+        justifyContent: "center",
+        flex: 1
 
     },
     fab: {

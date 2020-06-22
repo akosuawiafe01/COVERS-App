@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { StyleSheet, Text, View, AppRegistry } from 'react-native';
 import Constants from 'expo-constants'
 
@@ -10,10 +10,17 @@ import { ApolloProvider } from "@apollo/react-hooks"
 
 
 import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
+
+const Stack = createStackNavigator();
+
+//Onboarding screens
+import General_Info from './Onboarding-Screens/General_Info'
+import Get_Started from './Onboarding-Screens/Get_Started'
+import Verification from './Onboarding-Screens/Verification'
+import BottumTab from './Navigation/BottumTab' 
 
 
-
-import BottumTab from './Navigation/BottumTab'
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors)
     graphQLErrors.map(({ message, locations, path }) =>
@@ -43,10 +50,33 @@ export default function App() {
       <NavigationContainer>
 
         <View style={styles.container}>
+ 
+          <Stack.Navigator headerMode="none" initialRouteName="Get_Started">
+                    <Stack.Screen name="Get_Started" component={Get_Started} />
+                    <Stack.Screen name="Verification" component={Verification} />
+                    <Stack.Screen name="General_Info" component={General_Info} />
+                
+                    <Stack.Screen name="Home" component={BottumTab}  />
+                    
+                    {/* // Reload
+                    it's still giving the same error
+                    which error? Can't see from here...terminal is messed up...
+                    Im coming
+                    ok
+                    This is it: 
+                    Another navigator is already registered for this container. You likely have multiple navigators under a single "NavigationContainer" or "Screen". Make sure each navigator is under a separate "Screen" container. See https://reactnavigation.org/docs/nesting-navigators for a guide on nesting.
+                    Try again
+                    >>It's working now, thanks
+                    
+                    welcome
+                    Now please go to settings and tap the testing centers option
 
-          <BottumTab/>
-      
-        
+                    >>the otp isn't working: 🤢
+                    lol I can't see that emoji xD
+                  Ok seen
+                  >>you can see the app now?
+                    */}
+              </Stack.Navigator>
         </View>
 
       </NavigationContainer>

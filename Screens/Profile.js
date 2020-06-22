@@ -4,8 +4,8 @@ import { Card, TextInput, RadioButton } from 'react-native-paper';
 
 import ListCountries from '../Components/ListCountries'
 
-//import EDIT_USER_PROFILE  from  '../graphQL/Query'
-//import GET_USER_PROFILE from '../graphQL/Query'
+import { EDIT_USER_PROFILE, GET_USER_PROFILE }  from  '../graphQL/Query'
+
 
 import { useMutation } from '@apollo/react-hooks'
 
@@ -23,20 +23,22 @@ const Profile = () => {
 
     
 
-    //const [editProfile, {data, loading, error}] = useMutation(EDIT_USER_PROFILE);
+    const [editProfile, {data, loading, error}] = useMutation(EDIT_USER_PROFILE);
 
-    // const updateUserProfile = () => {
+    const updateUserProfile = () => {
         
-    //     editProfile({
-    //         variables: {
-    //             gender: profile.gender,
-    //             age: profile.age,
-    //             licenseNumber: profile.licenseNumber,
-    //             lastCountriesVisited: [currentCountryIndex, currentCountryIndex]
-    //         }
+        editProfile({
+            variables: {
+                gender: profile.gender,
+                age: profile.age,
+                licenseNumber: profile.licenseNumber,
+                
+            }
             
-    //         })    
-    //     }
+            })
+            
+            
+        }
 
 
     const [gender, updateGender] = useState(null);
@@ -62,9 +64,8 @@ const Profile = () => {
                                 color="#006211" 
                                 editable={true}
                                 //value={profile.age}
-                                //onChangeText={updateProfile(value)}
+                                onChangeText={updateProfile(value)}
                                 maxLength={2}
-                                onFocus={() => enableKeyboard(true)}
                
                 />
 
@@ -115,9 +116,7 @@ const Profile = () => {
                             <View style={{ marginTop: 10 }} >
 
                                 <TextInput mode="outlined" 
-                                label="Health License Number"
-                                 onFocus={() => enableKeyboard(true)} 
-                                 />
+                                label="Health License Number" onFocus={() => enableKeyboard(true)} />
 
                             </View>
 
@@ -125,10 +124,8 @@ const Profile = () => {
 
                     </View>
 
-                    <View style={{ marginTop: 10 }} >
-                        <Button title="Update Profile" color={"#006211"} 
-                        //onPress={editProfile} 
-                        />
+                    <View style={{ marginTop: 10, }} >
+                        <Button title="Update Profile" color={"#006211"} onPress={editProfile} />
                     </View>
 
                 </View>

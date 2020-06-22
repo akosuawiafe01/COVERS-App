@@ -118,4 +118,3 @@ mutation editProfile($gender: Gender, $age: Int, $lastCountriesVisited: [String]
 }
 `;
 
-

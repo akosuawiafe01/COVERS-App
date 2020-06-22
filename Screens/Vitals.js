@@ -5,13 +5,14 @@ import {  FAB,  } from 'react-native-paper'
 
 import { useQuery, useMutation } from '@apollo/react-hooks';
 
-import GET_USER_VITALS from '../graphQL/Query'
+import { GET_USER_VITALS } from '../graphQL/Query'
 
 
 
 const Vitals = ({ navigation }) => {
 
     const {loading, data, error} = useQuery(GET_USER_VITALS);
+
     return(
  
    
@@ -21,7 +22,7 @@ const Vitals = ({ navigation }) => {
         : data ? 
             
         <View style={{alignItems: "center", justifyContent: "center", flex: 1}}>
-            <Text>You haven't logged in your vitals yet...</Text>
+            <Text>Update page</Text>
 
         
         </View>
