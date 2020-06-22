@@ -15,6 +15,26 @@ export const GET_CASES = gql`
 
 `;
 
+export const COUNTRY_STATS = gql`
+  query country($name: String!){
+countryInfo{
+  _id, 
+  flag
+}
+    result{
+      cases,
+      deaths,
+      recovered,
+      active,
+      critical,
+      tests
+      
+    }
+    
+  }
+
+`
+
 
 export const REGISTER_USER = gql`
 

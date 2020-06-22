@@ -20,7 +20,7 @@ const MakeReport = ({ navigation }) => {
         // });
         Alert.alert("Success", "Your report has been made successfully")
         
-        navigation.navigate("MakeReport", {reporter, location, landmark, altContact, description})
+        navigation.navigate("CaseReports", {reporter, location, landmark, altContact, description})
         
     }
 
@@ -86,7 +86,7 @@ const MakeReport = ({ navigation }) => {
                     color="#006211" 
                     editable={true}
                     value={landmark}
-                    onChangeText={setAltContact}
+                    onChangeText={setLandmark}
                     onFocus={() => enableKeyboard(true)} />
 
                     

@@ -48,10 +48,10 @@ const styles = StyleSheet.create({
     },
     img: {
         marginRight:20,
-        height: 50,
         borderWidth: 1,
         borderColor: "#e3e3e3", 
-        width: 50
+        width: 45,
+        height: 30
     },
     label: {
         fontSize: 17

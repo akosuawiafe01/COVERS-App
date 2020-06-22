@@ -1,6 +1,6 @@
 import React from 'react'
-import { View, Text, StyleSheet  } from 'react-native'
-import { FAB, Button } from 'react-native-paper'
+import { View, Text, StyleSheet, Button  } from 'react-native'
+import { FAB,  } from 'react-native-paper'
 
 
 
@@ -26,6 +26,7 @@ const Report = ({ navigation }) => {
             onPress={() => navigation.navigate("MakeReport") }
             />
 
+            
 
 
         </View>
@@ -48,7 +49,8 @@ const styles = StyleSheet.create({
         position: 'absolute',
         margin: 16,
         right: 0,
-        bottom: 0,
+        bottom: 20,
+
     }
 
 });

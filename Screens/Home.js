@@ -34,7 +34,7 @@ const Home = ({ navigation }) => {
             
             <View>
                 
-                <Text style={{fontSize: 20, }}>Worldwide Statistics
+                <Text style={{fontSize: 20, color: "#006211", alignSelf: "center", marginTop: 30 }}>Worldwide Statistics
 </Text>          
             </View>
       

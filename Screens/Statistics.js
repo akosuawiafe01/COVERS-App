@@ -1,15 +1,29 @@
-import React from 'react'
-import { View, Image, Text, StyleSheet } from 'react-native'
+import React,  {useState} from 'react'
+import { View, Image, Text, StyleSheet, TouchableNativeFeedback } from 'react-native'
 import { Ionicons, Foundation, Entypo } from '@expo/vector-icons';
 
-const SettingsScreen = () => {
+import CountriesModal from '../Components/CountriesModal'
+
+
+
+const Statistics = () => {
+
+    const [modalVisible, setModalVisible] = useState(false);
+    const [currentCountryIndex, setCurrentCountryIndex] = useState(-1);
+
+    const [selectedCountry, setSelectedCountry] = useState([
+        {
+            "id": "77",
+            "name": "Ghana",
+            "flag": "https://disease.sh/assets/img/flags/gh.png"
+        },])
+
+
     return (
         <View style={styles.container}>
 
-            <View style={styles.header}>
-                <Text style={styles.headerText} >COVID-19 Worldwide</Text>
-            </View>
-            <View style={{ paddingHorizontal: 10 }}>
+          
+            <View style={{marginTop: 50, paddingHorizontal: 10 }}>
                 <View style={styles.card}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
                         <Ionicons name='ios-globe' size={22} color='blue' />
@@ -33,11 +47,17 @@ const SettingsScreen = () => {
 
                 <Text style={styles.selectCountryText}>Select country:</Text>
 
+                <TouchableNativeFeedback onPress={() => {
+                setCurrentCountryIndex(0);
+                setModalVisible(true);
+            }}>
                 <View style={[styles.card, { flexDirection: 'row', alignItems: 'center', marginBottom: 10 }]}>
-                    <Image source={{ uri: "https://corona.lmao.ninja/assets/img/flags/gh.png" }} style={styles.flag} />
+                    <Image source={{ uri: selectedCountry[0].flag }} style={styles.flag} />
                     <Text style={styles.countryText}>Ghana</Text>
                     <Entypo name='chevron-small-down' size={20} />
                 </View>
+
+            </TouchableNativeFeedback>
 
                 <View style={styles.card}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 10 }}>
@@ -79,6 +99,13 @@ const SettingsScreen = () => {
                 </View>
 
             </View>
+
+            <CountriesModal visible={modalVisible} onRequestClose={() => setModalVisible(false)}
+                onSelectCountry={(country) => {
+                    selectedCountry[currentCountryIndex] = country;
+                    setSelectedCountry(selectedCountry);
+                    setModalVisible(false);
+                }} />
 
         </View>
     )
@@ -130,4 +157,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default SettingsScreen;
+export default Statistics;

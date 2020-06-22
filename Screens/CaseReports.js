@@ -1,12 +1,31 @@
 import React, {useState} from 'react'
-import { View, Text, StyleSheet, Alert } from 'react-native'
-import { FAB } from 'react-native-paper'
+import { View, Text, StyleSheet, Alert, FlatList } from 'react-native'
+import { FAB, Card } from 'react-native-paper'
 
 
 
 
-const CaseReports = ({ navigation }) => {
 
+const CaseReports = ({ navigation, route }) => {
+
+    const {reporter, location, landmark, altContact, description} = route.params 
+
+    const data = [
+        {id: "1", message: reporter},
+        {id: "2", message: location},
+        {id: "4", message: landmark},
+        {id: "6", message: altContact},
+        {id: "5", message: description}
+    ];
+
+    const ReportedCases = ({item}) => {
+        return(
+            <Card >
+                <Text>{item.message}</Text>
+                <Text>{item.time}</Text>
+        </Card>
+        )
+    }
  
 return(
         <View style={styles.container}>
@@ -15,18 +34,7 @@ return(
             <FlatList
             data={data}
             keyExtractor={data.id}
-            renderItem={({item}) =>
-             
-                 <Card >
-                     <View style={{flex: 1, flexDirection: "row", justifyContent: "space-between", margin: 5, padding: 10, elevation: 0.5, borderBottomColor: "#f5673a"}} >
-                        <Text>{item.message}</Text>
-
-                        <Text>{item.time}</Text>
-
-                    </View>
-                 </Card>
-
-            }
+            renderItem={({item}) => <ReportedCases  item={item}/> }
             />
 
 
@@ -45,6 +53,8 @@ return(
         </View>
     )
 }
+
+
 
 
 const styles = StyleSheet.create({
