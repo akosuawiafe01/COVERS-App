@@ -2,11 +2,11 @@
 A COVID-19 tracking mobile app
 
 
-# Student Details
+### Student Details
 ID: 10685093
 
 
 
-# Expo Credentials
+### Expo Credentials
 username: akosuanyarkoa
 password: @Nyharkxx25
