@@ -11,4 +11,4 @@ Name: Wiafe-Akenten Akosua Nyarkoa
 
 ### Expo Credentials
 username: akosuanyarkoa
-password: @Nyharkxx25
+App URL: https://exp.host/@akosuanyarkoa/covers-app-clone
